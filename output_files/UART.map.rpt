@@ -1,0 +1,616 @@
+Analysis & Synthesis report for UART
+Wed Jan 03 09:54:18 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |UART|write_to_fifo:write_to_fifo|current_state
+  9. State Machine - |UART|uart_transmitter:UART_TX_UNIT|state_r
+ 10. State Machine - |UART|uart_receiver:UART_RX_UNIT|state_r
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |UART
+ 17. Parameter Settings for User Entity Instance: baud_rate_generator:BAUD_RATE_GEN
+ 18. Parameter Settings for User Entity Instance: uart_receiver:UART_RX_UNIT
+ 19. Parameter Settings for User Entity Instance: fifo_rx:FIFO_RX_UNIT
+ 20. Parameter Settings for User Entity Instance: uart_transmitter:UART_TX_UNIT
+ 21. Parameter Settings for User Entity Instance: fifo_tx:FIFO_TX_UNIT
+ 22. Port Connectivity Checks: "fifo_rx:FIFO_RX_UNIT"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Jan 03 09:54:18 2024       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; UART                                        ;
+; Top-level Entity Name           ; UART                                        ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 91                                          ;
+; Total pins                      ; 49                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEBA6U23I7       ;                    ;
+; Top-level entity name                                                           ; UART               ; UART               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                       ;
++--------------------------------------------+-----------------+------------------------------+--------------------------------------+---------+
+; File Name with User-Entered Path           ; Used in Netlist ; File Type                    ; File Name with Absolute Path         ; Library ;
++--------------------------------------------+-----------------+------------------------------+--------------------------------------+---------+
+; ../../../bkhoa/fpga/read_fifo_rx.sv        ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/read_fifo_rx.sv        ;         ;
+; ../../../bkhoa/fpga/write_fifo_tx.sv       ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/write_fifo_tx.sv       ;         ;
+; ../../../bkhoa/fpga/uart_transmitter.sv    ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/uart_transmitter.sv    ;         ;
+; ../../../bkhoa/fpga/uart_top.sv            ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/uart_top.sv            ;         ;
+; ../../../bkhoa/fpga/uart_receiver.sv       ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/uart_receiver.sv       ;         ;
+; ../../../bkhoa/fpga/fifo_tx.sv             ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/fifo_tx.sv             ;         ;
+; ../../../bkhoa/fpga/fifo_rx.sv             ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/fifo_rx.sv             ;         ;
+; ../../../bkhoa/fpga/baud_rate_generator.sv ; yes             ; User SystemVerilog HDL File  ; C:/bkhoa/fpga/baud_rate_generator.sv ;         ;
++--------------------------------------------+-----------------+------------------------------+--------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 112       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 189       ;
+;     -- 7 input functions                    ; 1         ;
+;     -- 6 input functions                    ; 31        ;
+;     -- 5 input functions                    ; 23        ;
+;     -- 4 input functions                    ; 20        ;
+;     -- <=3 input functions                  ; 114       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 91        ;
+;                                             ;           ;
+; I/O pins                                    ; 49        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; rst~input ;
+; Maximum fan-out                             ; 99        ;
+; Total fan-out                               ; 1100      ;
+; Average fan-out                             ; 2.91      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                            ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Entity Name         ; Library Name ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------------+--------------+
+; |UART                                  ; 189 (8)             ; 91 (0)                    ; 0                 ; 0          ; 49   ; 0            ; |UART                                   ; UART                ; work         ;
+;    |baud_rate_generator:BAUD_RATE_GEN| ; 6 (6)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |UART|baud_rate_generator:BAUD_RATE_GEN ; baud_rate_generator ; work         ;
+;    |fifo_rx:FIFO_RX_UNIT|              ; 56 (56)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |UART|fifo_rx:FIFO_RX_UNIT              ; fifo_rx             ; work         ;
+;    |fifo_tx:FIFO_TX_UNIT|              ; 57 (57)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |UART|fifo_tx:FIFO_TX_UNIT              ; fifo_tx             ; work         ;
+;    |read_fifo_rx:READ_FIFO_RX|         ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |UART|read_fifo_rx:READ_FIFO_RX         ; read_fifo_rx        ; work         ;
+;    |uart_receiver:UART_RX_UNIT|        ; 26 (26)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |UART|uart_receiver:UART_RX_UNIT        ; uart_receiver       ; work         ;
+;    |uart_transmitter:UART_TX_UNIT|     ; 31 (31)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |UART|uart_transmitter:UART_TX_UNIT     ; uart_transmitter    ; work         ;
+;    |write_to_fifo:write_to_fifo|       ; 5 (5)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |UART|write_to_fifo:write_to_fifo       ; write_to_fifo       ; work         ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------+
+; State Machine - |UART|write_to_fifo:write_to_fifo|current_state           ;
++------------------+------------------+------------------+------------------+
+; Name             ; current_state.S1 ; current_state.S3 ; current_state.S2 ;
++------------------+------------------+------------------+------------------+
+; current_state.S1 ; 0                ; 0                ; 0                ;
+; current_state.S2 ; 1                ; 0                ; 1                ;
+; current_state.S3 ; 1                ; 1                ; 0                ;
++------------------+------------------+------------------+------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------+
+; State Machine - |UART|uart_transmitter:UART_TX_UNIT|state_r                ;
++---------------+--------------+--------------+---------------+--------------+
+; Name          ; state_r.stop ; state_r.data ; state_r.start ; state_r.idle ;
++---------------+--------------+--------------+---------------+--------------+
+; state_r.idle  ; 0            ; 0            ; 0             ; 0            ;
+; state_r.start ; 0            ; 0            ; 1             ; 1            ;
+; state_r.data  ; 0            ; 1            ; 0             ; 1            ;
+; state_r.stop  ; 1            ; 0            ; 0             ; 1            ;
++---------------+--------------+--------------+---------------+--------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------+
+; State Machine - |UART|uart_receiver:UART_RX_UNIT|state_r                   ;
++---------------+--------------+--------------+---------------+--------------+
+; Name          ; state_r.stop ; state_r.data ; state_r.start ; state_r.idle ;
++---------------+--------------+--------------+---------------+--------------+
+; state_r.idle  ; 0            ; 0            ; 0             ; 0            ;
+; state_r.start ; 0            ; 0            ; 1             ; 1            ;
+; state_r.data  ; 0            ; 1            ; 0             ; 1            ;
+; state_r.stop  ; 1            ; 0            ; 0             ; 1            ;
++---------------+--------------+--------------+---------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; fifo_tx:FIFO_TX_UNIT|array_r~0                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~8                      ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~16                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~24                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~1                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~9                      ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~17                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~25                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~2                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~10                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~18                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~26                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~3                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~11                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~19                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~27                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~4                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~12                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~20                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~28                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~5                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~13                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~21                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~29                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~6                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~14                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~22                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~30                     ; rtl~3               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~7                      ; rtl~0               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~15                     ; rtl~1               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~23                     ; rtl~2               ; yes                    ;
+; fifo_tx:FIFO_TX_UNIT|array_r~31                     ; rtl~3               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~0                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~8                      ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~16                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~24                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~1                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~9                      ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~17                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~25                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~2                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~10                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~18                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~26                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~3                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~11                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~19                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~27                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~4                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~12                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~20                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~28                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~5                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~13                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~21                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~29                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~6                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~14                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~22                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~30                     ; rtl~7               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~7                      ; rtl~4               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~15                     ; rtl~5               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~23                     ; rtl~6               ; yes                    ;
+; fifo_rx:FIFO_RX_UNIT|array_r~31                     ; rtl~7               ; yes                    ;
+; Number of user-specified and inferred latches = 64  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------+
+; Registers Removed During Synthesis                           ;
++-----------------------------------------+--------------------+
+; Register name                           ; Reason for Removal ;
++-----------------------------------------+--------------------+
+; uart_transmitter:UART_TX_UNIT|state_r~4 ; Lost fanout        ;
+; uart_transmitter:UART_TX_UNIT|state_r~5 ; Lost fanout        ;
+; uart_receiver:UART_RX_UNIT|state_r~4    ; Lost fanout        ;
+; uart_receiver:UART_RX_UNIT|state_r~5    ; Lost fanout        ;
+; Total Number of Removed Registers = 4   ;                    ;
++-----------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 91    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 91    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 35    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; fifo_tx:FIFO_TX_UNIT|empty_r           ; 7       ;
+; uart_transmitter:UART_TX_UNIT|tx_r     ; 1       ;
+; fifo_rx:FIFO_RX_UNIT|empty_r           ; 18      ;
+; fifo_tx:FIFO_TX_UNIT|array_r.we_a      ; 4       ;
+; fifo_rx:FIFO_RX_UNIT|array_r.we_a      ; 4       ;
+; Total number of inverted registers = 5 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |UART|write_to_fifo:write_to_fifo|counter[1]  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |UART|fifo_rx:FIFO_RX_UNIT|rd_ptr_r[1]        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |UART|fifo_tx:FIFO_TX_UNIT|wr_ptr_r[1]        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |UART|fifo_tx:FIFO_TX_UNIT|rd_ptr_r[1]        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |UART|fifo_rx:FIFO_RX_UNIT|wr_ptr_r[0]        ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |UART|uart_transmitter:UART_TX_UNIT|b_r[0]    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |UART|uart_transmitter:UART_TX_UNIT|n_r[2]    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |UART|uart_receiver:UART_RX_UNIT|n_r[2]       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_transmitter:UART_TX_UNIT|s_r[3]    ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |UART|uart_receiver:UART_RX_UNIT|s_r[2]       ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |UART|uart_transmitter:UART_TX_UNIT|Selector4 ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |UART|uart_transmitter:UART_TX_UNIT|Selector1 ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |UART|uart_receiver:UART_RX_UNIT|Selector1    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |UART ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; DBITS          ; 8     ; Signed Integer                              ;
+; SB_TICK        ; 16    ; Signed Integer                              ;
+; BR_LIMIT       ; 27    ; Signed Integer                              ;
+; BR_BITS        ; 5     ; Signed Integer                              ;
+; FIFO_EXP       ; 2     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: baud_rate_generator:BAUD_RATE_GEN ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; N              ; 5     ; Signed Integer                                        ;
+; M              ; 27    ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_receiver:UART_RX_UNIT ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; DBITS          ; 8     ; Signed Integer                                 ;
+; SB_TICK        ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_rx:FIFO_RX_UNIT ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                           ;
+; ADDR_SPACE_EXP ; 2     ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_transmitter:UART_TX_UNIT ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DBITS          ; 8     ; Signed Integer                                    ;
+; SB_TICK        ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_tx:FIFO_TX_UNIT ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                           ;
+; ADDR_SPACE_EXP ; 2     ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_rx:FIFO_RX_UNIT"                                                                                    ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; full ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 91                          ;
+;     CLR               ; 56                          ;
+;     ENA CLR           ; 35                          ;
+; arriav_lcell_comb     ; 192                         ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 191                         ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 93                          ;
+;         4 data inputs ; 20                          ;
+;         5 data inputs ; 23                          ;
+;         6 data inputs ; 31                          ;
+; boundary_port         ; 49                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 2.03                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Wed Jan 03 09:54:06 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UART -c UART
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/read_fifo_rx.sv
+    Info (12023): Found entity 1: read_fifo_rx File: C:/bkhoa/fpga/read_fifo_rx.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/clockdiv.sv
+    Info (12023): Found entity 1: clockdiv File: C:/bkhoa/fpga/clockdiv.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/write_fifo_tx.sv
+    Info (12023): Found entity 1: write_to_fifo File: C:/bkhoa/fpga/write_fifo_tx.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/uart_transmitter.sv
+    Info (12023): Found entity 1: uart_transmitter File: C:/bkhoa/fpga/uart_transmitter.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/uart_top.sv
+    Info (12023): Found entity 1: UART File: C:/bkhoa/fpga/uart_top.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/uart_receiver.sv
+    Info (12023): Found entity 1: uart_receiver File: C:/bkhoa/fpga/uart_receiver.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/uart.sv
+    Info (12023): Found entity 1: UART1ASD File: C:/bkhoa/fpga/UART.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/fifo_tx.sv
+    Info (12023): Found entity 1: fifo_tx File: C:/bkhoa/fpga/fifo_tx.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/fifo_rx.sv
+    Info (12023): Found entity 1: fifo_rx File: C:/bkhoa/fpga/fifo_rx.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /bkhoa/fpga/baud_rate_generator.sv
+    Info (12023): Found entity 1: baud_rate_generator File: C:/bkhoa/fpga/baud_rate_generator.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at uart_top.sv(50): created implicit net for "fifo_rx_wr" File: C:/bkhoa/fpga/uart_top.sv Line: 50
+Warning (10236): Verilog HDL Implicit Net warning at uart_top.sv(107): created implicit net for "not_empty_to_wr" File: C:/bkhoa/fpga/uart_top.sv Line: 107
+Info (12127): Elaborating entity "UART" for the top level hierarchy
+Info (12128): Elaborating entity "baud_rate_generator" for hierarchy "baud_rate_generator:BAUD_RATE_GEN" File: C:/bkhoa/fpga/uart_top.sv Line: 37
+Warning (10230): Verilog HDL assignment warning at baud_rate_generator.sv(24): truncated value with size 32 to match size of target (5) File: C:/bkhoa/fpga/baud_rate_generator.sv Line: 24
+Info (12128): Elaborating entity "uart_receiver" for hierarchy "uart_receiver:UART_RX_UNIT" File: C:/bkhoa/fpga/uart_top.sv Line: 52
+Warning (10230): Verilog HDL assignment warning at uart_receiver.sv(66): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_receiver.sv Line: 66
+Warning (10230): Verilog HDL assignment warning at uart_receiver.sv(75): truncated value with size 32 to match size of target (3) File: C:/bkhoa/fpga/uart_receiver.sv Line: 75
+Warning (10230): Verilog HDL assignment warning at uart_receiver.sv(78): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_receiver.sv Line: 78
+Warning (10230): Verilog HDL assignment warning at uart_receiver.sv(86): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_receiver.sv Line: 86
+Info (12128): Elaborating entity "fifo_rx" for hierarchy "fifo_rx:FIFO_RX_UNIT" File: C:/bkhoa/fpga/uart_top.sv Line: 69
+Warning (10230): Verilog HDL assignment warning at fifo_rx.sv(57): truncated value with size 32 to match size of target (2) File: C:/bkhoa/fpga/fifo_rx.sv Line: 57
+Warning (10230): Verilog HDL assignment warning at fifo_rx.sv(58): truncated value with size 32 to match size of target (2) File: C:/bkhoa/fpga/fifo_rx.sv Line: 58
+Warning (10270): Verilog HDL Case Statement warning at fifo_rx.sv(68): incomplete case statement has no default case item File: C:/bkhoa/fpga/fifo_rx.sv Line: 68
+Info (12128): Elaborating entity "read_fifo_rx" for hierarchy "read_fifo_rx:READ_FIFO_RX" File: C:/bkhoa/fpga/uart_top.sv Line: 80
+Info (12128): Elaborating entity "uart_transmitter" for hierarchy "uart_transmitter:UART_TX_UNIT" File: C:/bkhoa/fpga/uart_top.sv Line: 96
+Warning (10230): Verilog HDL assignment warning at uart_transmitter.sv(74): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_transmitter.sv Line: 74
+Warning (10230): Verilog HDL assignment warning at uart_transmitter.sv(86): truncated value with size 32 to match size of target (3) File: C:/bkhoa/fpga/uart_transmitter.sv Line: 86
+Warning (10230): Verilog HDL assignment warning at uart_transmitter.sv(88): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_transmitter.sv Line: 88
+Warning (10230): Verilog HDL assignment warning at uart_transmitter.sv(98): truncated value with size 32 to match size of target (4) File: C:/bkhoa/fpga/uart_transmitter.sv Line: 98
+Info (12128): Elaborating entity "fifo_tx" for hierarchy "fifo_tx:FIFO_TX_UNIT" File: C:/bkhoa/fpga/uart_top.sv Line: 113
+Warning (10230): Verilog HDL assignment warning at fifo_tx.sv(57): truncated value with size 32 to match size of target (2) File: C:/bkhoa/fpga/fifo_tx.sv Line: 57
+Warning (10230): Verilog HDL assignment warning at fifo_tx.sv(58): truncated value with size 32 to match size of target (2) File: C:/bkhoa/fpga/fifo_tx.sv Line: 58
+Warning (10270): Verilog HDL Case Statement warning at fifo_tx.sv(68): incomplete case statement has no default case item File: C:/bkhoa/fpga/fifo_tx.sv Line: 68
+Info (12128): Elaborating entity "write_to_fifo" for hierarchy "write_to_fifo:write_to_fifo" File: C:/bkhoa/fpga/uart_top.sv Line: 120
+Warning (10230): Verilog HDL assignment warning at write_fifo_tx.sv(48): truncated value with size 32 to match size of target (2) File: C:/bkhoa/fpga/write_fifo_tx.sv Line: 48
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[1]" is converted into an equivalent circuit using register "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[1]~_emulated" and latch "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[1]~1" File: C:/bkhoa/fpga/fifo_tx.sv Line: 30
+    Warning (13310): Register "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[0]" is converted into an equivalent circuit using register "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[0]~_emulated" and latch "fifo_tx:FIFO_TX_UNIT|array_r.waddr_a[0]~5" File: C:/bkhoa/fpga/fifo_tx.sv Line: 30
+    Warning (13310): Register "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[1]" is converted into an equivalent circuit using register "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[1]~_emulated" and latch "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[1]~1" File: C:/bkhoa/fpga/fifo_rx.sv Line: 30
+    Warning (13310): Register "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[0]" is converted into an equivalent circuit using register "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[0]~_emulated" and latch "fifo_rx:FIFO_RX_UNIT|array_r.waddr_a[0]~5" File: C:/bkhoa/fpga/fifo_rx.sv Line: 30
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[0]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[1]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[2]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[3]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[4]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[5]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[6]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+    Warning (15610): No output dependent on input pin "fifo_tx_data_in1[7]" File: C:/bkhoa/fpga/uart_top.sv Line: 10
+Info (21057): Implemented 270 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 38 output pins
+    Info (21061): Implemented 221 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 4831 megabytes
+    Info: Processing ended: Wed Jan 03 09:54:18 2024
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:09
+
+

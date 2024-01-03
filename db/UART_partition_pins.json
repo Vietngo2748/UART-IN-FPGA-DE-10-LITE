@@ -1,0 +1,173 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "fifo_tx_full",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_tx_data_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "checkreadtx",
+					"strict" : false
+				},
+				{
+					"name" : "checkempty",
+					"strict" : false
+				},
+				{
+					"name" : "uart_tx",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_data_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[0]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[1]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[2]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[3]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[4]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[5]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[6]",
+					"strict" : false
+				},
+				{
+					"name" : "uart_to_fifo[7]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[0]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[1]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[2]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[3]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[4]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[5]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[6]",
+					"strict" : false
+				},
+				{
+					"name" : "datafromread[7]",
+					"strict" : false
+				},
+				{
+					"name" : "checkreadfromrx",
+					"strict" : false
+				},
+				{
+					"name" : "fifo_rx_empty",
+					"strict" : false
+				},
+				{
+					"name" : "ckht",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "uart_rx",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

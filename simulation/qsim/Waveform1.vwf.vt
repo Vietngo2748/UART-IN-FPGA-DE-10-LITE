@@ -1,0 +1,139 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "01/03/2024 09:52:42"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          UART
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module UART_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg ckht;
+reg [7:0] fifo_tx_data_in1;
+reg rst;
+reg uart_rx;
+// wires                                               
+wire checkempty;
+wire checkreadfromrx;
+wire checkreadtx;
+wire [7:0] datafromread;
+wire [7:0] fifo_rx_data_out;
+wire fifo_rx_empty;
+wire [7:0] fifo_tx_data_out;
+wire fifo_tx_full;
+wire [7:0] uart_to_fifo;
+wire uart_tx;
+
+// assign statements (if any)                          
+UART i1 (
+// port map - connection between master ports and signals/registers   
+	.checkempty(checkempty),
+	.checkreadfromrx(checkreadfromrx),
+	.checkreadtx(checkreadtx),
+	.ckht(ckht),
+	.datafromread(datafromread),
+	.fifo_rx_data_out(fifo_rx_data_out),
+	.fifo_rx_empty(fifo_rx_empty),
+	.fifo_tx_data_in1(fifo_tx_data_in1),
+	.fifo_tx_data_out(fifo_tx_data_out),
+	.fifo_tx_full(fifo_tx_full),
+	.rst(rst),
+	.uart_rx(uart_rx),
+	.uart_to_fifo(uart_to_fifo),
+	.uart_tx(uart_tx)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+
+// ckht
+always
+begin
+	ckht = 1'b0;
+	ckht = #500 1'b1;
+	#500;
+end 
+// fifo_tx_data_in1[ 7 ]
+initial
+begin
+	fifo_tx_data_in1[7] = 1'b0;
+end 
+// fifo_tx_data_in1[ 6 ]
+initial
+begin
+	fifo_tx_data_in1[6] = 1'b0;
+end 
+// fifo_tx_data_in1[ 5 ]
+initial
+begin
+	fifo_tx_data_in1[5] = 1'b0;
+end 
+// fifo_tx_data_in1[ 4 ]
+initial
+begin
+	fifo_tx_data_in1[4] = 1'b0;
+end 
+// fifo_tx_data_in1[ 3 ]
+initial
+begin
+	fifo_tx_data_in1[3] = 1'b0;
+end 
+// fifo_tx_data_in1[ 2 ]
+initial
+begin
+	fifo_tx_data_in1[2] = 1'b0;
+end 
+// fifo_tx_data_in1[ 1 ]
+initial
+begin
+	fifo_tx_data_in1[1] = 1'b0;
+end 
+// fifo_tx_data_in1[ 0 ]
+initial
+begin
+	fifo_tx_data_in1[0] = 1'b0;
+end 
+
+// rst
+initial
+begin
+	rst = 1'b0;
+end 
+
+// uart_rx
+initial
+begin
+	uart_rx = 1'b1;
+	uart_rx = #50000 1'b0;
+	uart_rx = #40000 1'b1;
+	uart_rx = #20000 1'b0;
+	uart_rx = #20000 1'b1;
+	uart_rx = #10000 1'b0;
+	uart_rx = #20000 1'b1;
+	uart_rx = #230000 1'b0;
+	uart_rx = #100000 1'b1;
+end 
+endmodule
+

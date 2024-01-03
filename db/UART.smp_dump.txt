@@ -1,0 +1,20 @@
+
+State Machine - |UART|write_to_fifo:write_to_fifo|current_state
+Name current_state.S1 current_state.S3 current_state.S2 
+current_state.S1 0 0 0 
+current_state.S2 1 0 1 
+current_state.S3 1 1 0 
+
+State Machine - |UART|uart_transmitter:UART_TX_UNIT|state_r
+Name state_r.stop state_r.data state_r.start state_r.idle 
+state_r.idle 0 0 0 0 
+state_r.start 0 0 1 1 
+state_r.data 0 1 0 1 
+state_r.stop 1 0 0 1 
+
+State Machine - |UART|uart_receiver:UART_RX_UNIT|state_r
+Name state_r.stop state_r.data state_r.start state_r.idle 
+state_r.idle 0 0 0 0 
+state_r.start 0 0 1 1 
+state_r.data 0 1 0 1 
+state_r.stop 1 0 0 1 
